@@ -1207,6 +1207,29 @@ menu "LWIP"
                 RFC 4330 recommends a startup delay before sending the initial request.
                 LWIP calculates this delay to a random number of milliseconds between 0 and this value.
 
+        config LWIP_SNTP_RECV_TIMEOUT
+            int "Receive timeout (ms)"
+            default 15000
+            help
+                Timeout for a reply from an NTP server.
+                If this elapses without a response, the client will try the next server in the list.
+
+        config LWIP_SNTP_RETRY_TIMEOUT
+            int "Retry timeout (ms)"
+            default 15000
+            help
+                Timeout to retry a request after failure (e.g. memory allocation error, DNS failure,
+                or send failure). Set this shorter than the receive timeout if you want quicker retries.
+
+        config LWIP_SNTP_CHECK_RESPONSE
+            int "Check response validity (0-2)"
+            range 0 2
+            default 0
+            help
+                0: Do not check response validity.
+                1: Check response by originate timestamp and source address.
+                2: Check response by originate timestamp, source address, and protocol version.
+
     endmenu # SNTP
 
     menu "DNS"

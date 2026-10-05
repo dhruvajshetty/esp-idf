@@ -1608,6 +1608,18 @@ static inline uint32_t timeout_from_offered(uint32_t lease, uint32_t min)
  */
 #define SNTP_SERVER_DNS            1
 
+#ifdef CONFIG_LWIP_SNTP_RECV_TIMEOUT
+#define SNTP_RECV_TIMEOUT           CONFIG_LWIP_SNTP_RECV_TIMEOUT
+#endif
+
+#ifdef CONFIG_LWIP_SNTP_RETRY_TIMEOUT
+#define SNTP_RETRY_TIMEOUT          CONFIG_LWIP_SNTP_RETRY_TIMEOUT
+#endif
+
+#ifdef CONFIG_LWIP_SNTP_CHECK_RESPONSE
+#define SNTP_CHECK_RESPONSE         CONFIG_LWIP_SNTP_CHECK_RESPONSE
+#endif
+
 /**
  * It disables a check of SNTP_UPDATE_DELAY it is done in sntp_set_sync_interval
  */
